@@ -59,8 +59,5 @@ public class Test : MonoBehaviour
         playerCamera.transform.LookAt(transform.position + new Vector3(2 * mouseOffset.x, 0, 2 * mouseOffset.y));
 
         debugCube.transform.position = transform.position + new Vector3(2 * mouseOffset.x, 0, 2 * mouseOffset.y);
-
-        //Quaternion lookat = Quaternion.LookRotation(transform.position + Vector3.forward * offsetVector.y - playerCamera.transform.position);
-        //playerCamera.transform.rotation = Quaternion.Lerp(playerCamera.transform.rotation, lookat, Time.deltaTime * playerRotationSmoothing);
     }
 }
