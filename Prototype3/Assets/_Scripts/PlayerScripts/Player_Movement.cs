@@ -36,7 +36,7 @@ public class Player_Movement : MonoBehaviour
         gameManagerMaster = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager_Master>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Swoosh();
         Move();

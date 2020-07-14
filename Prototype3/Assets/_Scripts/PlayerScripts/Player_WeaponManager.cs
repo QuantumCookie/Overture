@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_WeaponManager : MonoBehaviour
 {
-    public Weapon_Data[] weapons;
+    private List<Weapon_Master> weapons;
 
     private Player_Master playerMaster;
     private int currentWeaponID;
@@ -17,10 +17,12 @@ public class Player_WeaponManager : MonoBehaviour
     private void Initialize()
     {
         playerMaster = GetComponent<Player_Master>();
+        weapons = new List<Weapon_Master>();
 
+        GetWeapons();
         DisableAllWeapons();
 
-        if (weapons.Length > 0) weapons[currentWeaponID = 0].gameObject.SetActive(true);
+        if (weapons.Count > 0) weapons[currentWeaponID = 0].gameObject.SetActive(true);
         else currentWeaponID = -1;
     }
 
@@ -39,7 +41,7 @@ public class Player_WeaponManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.E) || Input.mouseScrollDelta.y < 0) currentWeaponID--;
         else return;
 
-        currentWeaponID = (currentWeaponID + weapons.Length) % weapons.Length;
+        currentWeaponID = (currentWeaponID + weapons.Count) % weapons.Count;
         weapons[previousWeaponID].gameObject.SetActive(false);
         weapons[currentWeaponID].gameObject.SetActive(true);
 
@@ -49,12 +51,17 @@ public class Player_WeaponManager : MonoBehaviour
     public Texture2D CurrentWeaponCursor()
     {
         if (currentWeaponID == -1) return null;
-        return weapons[currentWeaponID].cursor;
+        return weapons[currentWeaponID].weaponObject.cursor;
+    }
+
+    private void GetWeapons()
+    {
+        weapons.AddRange(transform.GetComponentsInChildren<Weapon_Master>());
     }
 
     private void DisableAllWeapons()
     {
-        for (int i = 0; i < weapons.Length; i++)
+        for (int i = 0; i < weapons.Count; i++)
         {
             weapons[i].gameObject.SetActive(false);
         }

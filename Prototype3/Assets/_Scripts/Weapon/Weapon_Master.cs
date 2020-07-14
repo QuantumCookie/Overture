@@ -9,6 +9,7 @@ public enum WeaponMode
 
 public class Weapon_Master : MonoBehaviour
 {
+    public WeaponObject weaponObject;
     public bool isReloading;
     public delegate void GeneralEvent();
 

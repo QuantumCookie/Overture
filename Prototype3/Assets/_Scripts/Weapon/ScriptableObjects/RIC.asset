@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e55016f16562747aa87b7209ca2de6, type: 3}
+  m_Name: RIC
+  m_EditorClassIdentifier: 
+  id: 3
+  name: RIC
+  ammoType: 2
+  cursor: {fileID: 2800000, guid: 3b04e844fc11beb42954f22ff3a4219f, type: 3}
+  icon: {fileID: 2800000, guid: c7ce79a3e1e74cd42bfef706ae565747, type: 3}
+  reloadTime: 0
+  damagePrimary: 0
+  fireRatePrimary: 0
+  fireCostPrimary: 0
+  hasSecondaryFire: 0
+  damageSecondary: 0
+  fireRateSecondary: 0
+  fireCostSecondary: 0

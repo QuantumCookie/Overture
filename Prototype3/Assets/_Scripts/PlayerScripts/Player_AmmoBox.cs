@@ -34,7 +34,7 @@ public class Player_AmmoBox : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("Ammo Box enabled");
+        //Debug.Log("Ammo Box enabled");
         playerMaster.OnAmmoPickup += PickedUpAmmo;
     }
 
@@ -80,11 +80,11 @@ public class Player_AmmoBox : MonoBehaviour
 
     public Ammo GetAmmoData(AmmoType type)
     {
-        Debug.Log("Acquiring " + type);
+        //Debug.Log("Acquiring " + type);
         if (map == null) return null;
         if (map.ContainsKey(type)) return map[type];
 
-        Debug.Log("Failure");
+        //Debug.Log("Failure");
 
         return null;
     }

@@ -4,60 +4,37 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public Transform mainCamera;
-    public float speed = 10;
+    //public Transform target;
 
-    //Player Camera variables
-    public float cameraHeight = 20f;
-    public Vector2 cameraDistance = new Vector2(0, 10f);
-    public Camera playerCamera;
+    [Range(0, 180)]
+    public float angle = 10;
+    [Range(1, 20)]
+    public float length = 5;
 
-    private Vector3 cameraSmoothVelocity;
-
-    public float cameraSmoothTime = 0.5f;
-    public float playerRotationSmoothing = 0.5f;
-    public Vector2 mouseLookSmoothing;
-
-    //Mouse cursor Camera offset effect
-    Vector2 playerPosOnScreen;
-    Vector2 cursorPosition;
-    Vector2 offsetVector;
-
-    Vector3 cameraOffset;
-
-    public Transform debugCube;
-
-    private void Start() 
+    private void OnDrawGizmos()
     {
-        
-    }
+        //Vector3 direction = (target.position - transform.position).normalized;
+        //angle = Vector3.Angle(direction, Vector3.forward);
 
-    void Update()
-    {
-        transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * speed * Time.deltaTime);
-    }
+        Vector3 direction = Vector3.forward;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.left);
+        direction = rotation * direction;
+        direction.Normalize();
 
-    void LateUpdate()
-    {
-        //Setup camera offset
-        cameraOffset = new Vector3(-cameraDistance.x, cameraHeight, -cameraDistance.y);
+        Gizmos.DrawLine(transform.position, transform.position + direction * length);
 
-        //Mouse cursor offset effect
-        playerPosOnScreen = playerCamera.WorldToViewportPoint(transform.position);
-        cursorPosition = playerCamera.ScreenToViewportPoint(Input.mousePosition);
-        offsetVector = cursorPosition - playerPosOnScreen;
+        //Vector3 v0 = direction;
+        //Vector3 v0s = (Mathf.Abs(v0.y) > 0.707) ? Vector3.right : Vector3.up;
+        //Vector3 v1 = Vector3.Cross(v0, v0s).normalized;
+        //Vector3 v2 = Vector3.Cross(v0, v1).normalized;
 
-        Vector2 mouseOffset = new Vector2(offsetVector.x * mouseLookSmoothing.x, offsetVector.y * mouseLookSmoothing.y);
+        Vector3 v0 = direction;
+        Vector3 v1 = new Vector3(0, -v0.z, v0.y).normalized;
+        Vector3 v2 = Vector3.Cross(v0, v1).normalized;
 
-        cameraOffset += new Vector3(0, (Mathf.Abs(mouseOffset.x) + Mathf.Abs(mouseOffset.y)), 0);
-
-        Vector3 screenCenter = playerCamera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height) * 0.5f);
-        screenCenter.y = 0;
-
-        //Camera Follow
-        playerCamera.transform.position = Vector3.SmoothDamp(playerCamera.transform.position, transform.position + cameraOffset, ref cameraSmoothVelocity, cameraSmoothTime);
-        playerCamera.transform.LookAt(transform.position + new Vector3(2 * mouseOffset.x, 0, 2 * mouseOffset.y));
-
-        debugCube.transform.position = transform.position + new Vector3(2 * mouseOffset.x, 0, 2 * mouseOffset.y);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + v1 * length);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + v2 * length);
     }
 }

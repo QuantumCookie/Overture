@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon_Reload : MonoBehaviour
 {
     private Weapon_Master weaponMaster;
-    private Weapon_Data weaponData;
+    private WeaponObject weaponData;
     private Player_AmmoBox ammoBox;
     private Player_Master playerMaster;
 
@@ -30,7 +30,7 @@ public class Weapon_Reload : MonoBehaviour
     private void Initialize()
     {
         weaponMaster = GetComponent<Weapon_Master>();
-        weaponData = GetComponent<Weapon_Data>();
+        weaponData = weaponMaster.weaponObject;
         ammoBox = transform.root.GetComponent<Player_AmmoBox>();
         playerMaster = transform.root.GetComponent<Player_Master>();
     }

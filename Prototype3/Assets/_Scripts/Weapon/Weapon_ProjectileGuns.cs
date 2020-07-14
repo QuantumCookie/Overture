@@ -6,8 +6,8 @@ public class Weapon_ProjectileGuns : MonoBehaviour
 {
     private Player_AmmoBox ammoBox;
     private Player_ProjectilePool projectilePool;
-    private Weapon_Data weaponData;
     private Weapon_Master weaponMaster;
+    private WeaponObject weaponData;
 
     public GameObject projectile;
     public GameObject muzzleEffects;
@@ -31,8 +31,8 @@ public class Weapon_ProjectileGuns : MonoBehaviour
     {
         ammoBox = transform.root.GetComponent<Player_AmmoBox>();
         projectilePool = ammoBox.GetComponent<Player_ProjectilePool>();
-        weaponData = GetComponent<Weapon_Data>();
         weaponMaster = GetComponent<Weapon_Master>();
+        weaponData = weaponMaster.weaponObject;
 
         if(weaponMode == WeaponMode.PRIMARY)
         {

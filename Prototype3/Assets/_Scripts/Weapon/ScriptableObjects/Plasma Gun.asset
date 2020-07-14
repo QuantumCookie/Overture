@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e55016f16562747aa87b7209ca2de6, type: 3}
+  m_Name: Plasma Gun
+  m_EditorClassIdentifier: 
+  id: 1
+  name: Plasma Gun
+  ammoType: 2
+  cursor: {fileID: 2800000, guid: f80eb592be859c040a2e922fce8cd7ff, type: 3}
+  icon: {fileID: 2800000, guid: c7ce79a3e1e74cd42bfef706ae565747, type: 3}
+  reloadTime: 5
+  damagePrimary: 30
+  fireRatePrimary: 0.5
+  fireCostPrimary: 1
+  hasSecondaryFire: 1
+  damageSecondary: 50
+  fireRateSecondary: 10
+  fireCostSecondary: 5

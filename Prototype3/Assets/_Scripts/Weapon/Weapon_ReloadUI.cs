@@ -36,7 +36,7 @@ public class Weapon_ReloadUI : MonoBehaviour
     {
         while (ammoData == null)
         {
-            ammoData = ammoBox.GetAmmoData(GetComponent<Weapon_Data>().ammoType);
+            ammoData = ammoBox.GetAmmoData(GetComponent<Weapon_Master>().weaponObject.ammoType);
             yield return null;
         }
     }

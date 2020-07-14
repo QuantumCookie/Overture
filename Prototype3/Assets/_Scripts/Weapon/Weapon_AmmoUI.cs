@@ -27,7 +27,7 @@ public class Weapon_AmmoUI : MonoBehaviour
 
     private void LateInitialize()
     {
-        ammoData = ammoBox.GetAmmoData(GetComponent<Weapon_Data>().ammoType);
+        ammoData = ammoBox.GetAmmoData(GetComponent<Weapon_Master>().weaponObject.ammoType);
     }
 
     private void LateUpdate()
